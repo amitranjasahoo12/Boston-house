@@ -4,8 +4,6 @@ from flask_cors import CORS,cross_origin
 import pickle
 from wsgiref import simple_server
 import os
-import sqlite3
-#import sys
 
 app = Flask(__name__) # initializing a flask app
 
@@ -43,10 +41,8 @@ def index():
 
 
 
-
 if __name__ == "__main__":
-    port = str(os.getenv("PORT"))
-    app = app.run()
+    port = int(os.getenv("PORT"))    # port = int(os.getenv("PORT",6000))  for local Run
     host = '0.0.0.0'
     httpd = simple_server.make_server(host=host,port=port, app=app)
     httpd.serve_forever()

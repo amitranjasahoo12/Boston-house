@@ -4,6 +4,7 @@ from flask_cors import CORS,cross_origin
 import pickle
 from wsgiref import simple_server
 import os
+import sqlite3
 
 app = Flask(__name__) # initializing a flask app
 

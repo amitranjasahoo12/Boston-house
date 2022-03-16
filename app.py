@@ -2,6 +2,7 @@
 from flask import Flask, render_template, request,jsonify
 from flask_cors import CORS,cross_origin
 import pickle
+from wsgiref import simple_server
 
 app = Flask(__name__) # initializing a flask app
 
@@ -39,6 +40,10 @@ def index():
 
 
 
+
 if __name__ == "__main__":
-    #app.run(host='127.0.0.1', port=8001, debug=True)
-	app.run(debug=True) # running the app
+    port = int(os.getenv("PORT"))
+    app = app()
+    host = '0.0.0.0'
+    httpd = simple_server.make_server(host=host,port=port, app=app)
+    httpd.serve_forever()
